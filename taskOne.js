@@ -1,7 +1,9 @@
 var webdriver = require("selenium-webdriver");
+var chai = require('chai');
+var assert = chai.assert;
 
 var driver = new webdriver.Builder()
-	.forBrowser('firefox')
+	.forBrowser('chrome')
 	.build();
 
 
@@ -17,7 +19,7 @@ function getLinkToCinema() {
 	return driver.findElement(webdriver.By.linkText('Кино'));
 }
 
-function getText(locator, caption) {
+function getTxt(locator, caption) {
 	driver.findElement(webdriver.By.css(locator)).then(el => {
 		el.getText().then(text => {
 			console.log(caption + ' - ' + text);
@@ -38,22 +40,15 @@ driver.get('https://www.tut.by/').then(() => {
 }).then((currentLink) => {
 	return clickURL(currentLink);
 }).then(() => {
-	return getText('.b-places_header', 'Title');
+	return getTxt('.b-places_header', 'Title');
 }).then(() => {
 	return findElementAndSendText(webdriver.By.id('search-movie-str'), 'Анаболики');
 }).then(() => {
 	return driver.findElement(webdriver.By.css('input[class="button big"]')).click();
 }).then(() => {
-	return driver.sleep(5000);
-// }).then(() => {
-// 	return driver.navigate().back();
-}).then(() => {
-	return assert.eventually.equal(Promise.resolve(driver.findElement(webdriver.By.css('a.name > span')).then(el => {
-		el.getText().then(text => {
-			return text;
-		})
-	})), Кровью и потом: Анаболики, "This had better be true, eventually");
-	// return getText('a.name > span', 'Name of film - ')
+	return driver.findElement(webdriver.By.xpath('//*[@id="online-cinema"]/div/ul/li/a[2]/span')).getText();
+}).then((txt) => {
+	assert.equal(txt, 'Кровью и потом: Анаболики', 'Haven\'t element'));
 }).then(() => {
 	driver.quit();
 })

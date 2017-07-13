@@ -1,0 +1,25 @@
+{
+	"name": "tasksniazhana03",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"chai": "^4.1.0",
+		"selenium-webdriver": "^3.4.0"
+
+	},
+	"devDependencies": {},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/VyacheslavPislyakov/task04.git"
+	},
+	"bugs": {
+		"url": "https://github.com/VyacheslavPislyakov/task04/issues"
+	},
+	"homepage": "https://github.com/VyacheslavPislyakov/task04#readme"
+}
