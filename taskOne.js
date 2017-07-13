@@ -48,7 +48,7 @@ driver.get('https://www.tut.by/').then(() => {
 }).then(() => {
 	return driver.findElement(webdriver.By.xpath('//*[@id="online-cinema"]/div/ul/li/a[2]/span')).getText();
 }).then((txt) => {
-	assert.equal(txt, 'Кровью и потом: Анаболики', 'Haven\'t element'));
+	assert.equal(txt, 'Кровью и потом: Анаболики', 'Haven\'t element');
 }).then(() => {
 	driver.quit();
 })
